@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "author": "João Marcus Martins Reis",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -153.3,
+      "left": -53.4,
+      "attrs": { "temperature": "-34.3", "humidity": "27.5" }
+    },
+    { "type": "wokwi-neopixel", "id": "rgb1", "top": 111.7, "left": -106.6, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 77.56, "left": -124.8, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 124.8, "left": -87, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 109.55,
+      "left": -67.2,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -24.85,
+      "left": -19.2,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn-red1",
+      "top": 198.2,
+      "left": -96,
+      "attrs": { "color": "red", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 205.55,
+      "left": -163.2,
+      "attrs": { "value": "4700" }
+    },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 240, "left": -106.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "h124.8", "v38.4" ] ],
+    [ "dht1:SDA", "esp:21", "blue", [ "h163.3", "v86.4" ] ],
+    [ "rgb1:VDD", "vcc1:VCC", "red", [ "h0" ] ],
+    [ "rgb1:VSS", "gnd1:GND", "black", [ "v-0.9", "h8.8" ] ],
+    [ "esp:26", "r1:2", "cyan", [ "h0" ] ],
+    [ "r1:1", "rgb1:DIN", "cyan", [ "v0" ] ],
+    [ "r2:1", "dht1:VCC", "red", [ "v0", "h-19.2" ] ],
+    [ "r2:2", "dht1:SDA", "blue", [ "v0" ] ],
+    [ "r3:2", "btn-red1:1.l", "magenta", [ "v0" ] ],
+    [ "r3:1", "esp:3V3", "red", [ "v0" ] ],
+    [ "btn-red1:1.l", "esp:13", "magenta", [ "v-38.4", "h100.61" ] ],
+    [ "btn-red1:2.l", "gnd2:GND", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
