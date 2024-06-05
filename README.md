@@ -30,6 +30,21 @@
 - color pode ser: 0 (VERDE), 1 (AMARELO), 2 (VERMELHO), 3 (AZUL)
 - state pode ser: 0 (DESLIGADO), 1 (LIGADO), 2 (PISCANDO_1S), 3 (PISCANDO_0_3S)
 
+#### Monitoramento de Dados:
+O ESP32 publica dados de temperatura, umidade, cor e estado do LED no tópico topic_sensor_humidiJM. Abaixo estão os detalhes dos dados enviados:
+- Tópico: topic_sensor_humidiJM
+- Formato da Mensagem: JSON
+```
+ {
+  "temperature": 25.3,
+  "humidity": 60.2,
+  "ledReport": {
+    "cor": "Vermelho",
+    "status": "LIGADO"
+  }
+}
+
+ ```
 ## Observações
 
 - Certifique-se de usar as versões mais recentes das bibliotecas.
